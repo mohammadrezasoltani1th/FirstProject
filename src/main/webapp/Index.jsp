@@ -3,11 +3,7 @@
     <meta charset="UTF-8">
     <title>Welcom</title>
 
-    <%--    <style><%@include file="webjars/jquery/3.6.0/jquery.js"%></style>--%>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <style><%@include file="webjars/bootstrap/4.0.0/css/bootstrap.min.css"%></style>
-    <style><%@include file="webjars/bootstrap/4.0.0/js/bootstrap.min.js"%></style>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 
@@ -71,8 +67,8 @@
                 cell1.innerHTML = id;
                 cell2.innerHTML = name;
                 cell3.innerHTML = family;
-                cell4.innerHTML = '<button class="btn-danger" value='+id+' onclick="deleteById(value)">DELETE</button>';
-                cell5.innerHTML = '<button class="btn-info" value='+id+' onclick="updateById(value)">UPDATE</button>';
+                cell4.innerHTML = '<button value='+id+' onclick="deleteById(value)">DELETE</button>';
+                cell5.innerHTML = '<button value='+id+' onclick="updateById(value)">UPDATE</button>';
 
             }
 
@@ -125,25 +121,22 @@
     </script>
 </head>
 <body>
-<div class="container">
-
-<%--<div style="margin: auto;text-align: center;"><button onclick="BookPage();">Book</button></div>--%>
+<div style="margin: auto;text-align: center;"><button onclick="BookPage();">Book</button></div>
 <input type="text" id="id" disabled>
 <input type="text" id="fname">
 <input type="text" id="lname">
 
-<button class="btn-success my-3" style="cursor: pointer" onclick="save();">s.a.v.e</button>
-<button class="btn-danger" style="cursor: pointer"  onclick="clearTbl();">clear grid</button>
-<button class="btn-danger" style="cursor: pointer"  onclick="clearInput();">clear Input</button>
-<button class="btn-info" style="cursor: pointer" onclick="grid();">grid</button>
+<button style="cursor: pointer" onclick="save();">s.a.v.e</button>
+<button style="cursor: pointer"  onclick="clearTbl();">clear grid</button>
+<button style="cursor: pointer"  onclick="clearInput();">clear Input</button>
+<button style="cursor: pointer" onclick="grid();">grid</button>
 
-<table class="table table-bordered table-striped table-hover my-3">
+<table>
     <thead>
     <tr>
         <td>id</td>
         <td>name</td>
         <td>family</td>
-        <td>action</td>
         <td>action</td>
     </tr>
     </thead>
@@ -151,6 +144,6 @@
 
     </tbody>
 </table>
-</div>
+
 </body>
 </html>
