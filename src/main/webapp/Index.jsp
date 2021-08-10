@@ -3,7 +3,9 @@
     <meta charset="UTF-8">
     <title>Welcom</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style><%@include file="webjars/bootstrap/4.0.0/css/bootstrap.min.css"%></style>
+    <script><%@include file="webjars/jquery/3.6.0/jquery.min.js"%></script>
 
 
 
@@ -121,17 +123,18 @@
     </script>
 </head>
 <body>
+<div class="container">
 <div style="margin: auto;text-align: center;"><button onclick="BookPage();">Book</button></div>
 <input type="text" id="id" disabled>
 <input type="text" id="fname">
 <input type="text" id="lname">
 
-<button style="cursor: pointer" onclick="save();">s.a.v.e</button>
+<button class="aaa" style="cursor: pointer" onclick="save();">s.a.v.e</button>
 <button style="cursor: pointer"  onclick="clearTbl();">clear grid</button>
-<button style="cursor: pointer"  onclick="clearInput();">clear Input</button>
+<button class="aaa" style="cursor: pointer"  onclick="clearInput();">clear Input</button>
+<button class="aaa" style="cursor: pointer"  onclick="aer();">cleasadasdsadsadr Input</button>
 <button style="cursor: pointer" onclick="grid();">grid</button>
-
-<table>
+<table class="table table-hover">
     <thead>
     <tr>
         <td>id</td>
@@ -144,6 +147,7 @@
 
     </tbody>
 </table>
+</div>
 
 </body>
 </html>
