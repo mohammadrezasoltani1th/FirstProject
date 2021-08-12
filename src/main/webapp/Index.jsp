@@ -58,7 +58,6 @@
             });
 
             function myFunction(id,name,family) {
-
                 var table = document.getElementById("tbody");
                 var row = table.insertRow(0);
                 var cell1 = row.insertCell(0);
@@ -120,6 +119,38 @@
 
 
         }
+      function hey()
+      {
+          console.log("hey");
+      }
+        function repet()
+        {
+            for (i = 0;i<5;i++){
+                // var btn = document.createElement("BUTTON");
+                var btn = document.createElement("BUTTON");
+                btn.onclick = function hh(){
+                   hey();
+                };
+                btn.innerText = "hello";
+                btn.style.height="40px";
+                btn.className="btn btn-info";
+                document.getElementById("auto").appendChild(btn);
+
+            }
+
+
+        }
+        function combo()
+        {
+            for (i = 0;i<5;i++)
+            {
+                var cmbo = document.createElement("option");
+                cmbo.innerText = "bmw";
+                document.getElementById("cars").appendChild(cmbo);
+
+            }
+        }
+
     </script>
 </head>
 <body>
@@ -134,6 +165,16 @@
 <button class="aaa" style="cursor: pointer"  onclick="clearInput();">clear Input</button>
 <button class="aaa" style="cursor: pointer"  onclick="aer();">cleasadasdsadsadr Input</button>
 <button style="cursor: pointer" onclick="grid();">grid</button>
+    <button onclick="repet();">
+        Reapet
+    </button>
+    <button onclick="combo();">
+        fill combo
+    </button>
+    <div id="auto"></div>
+    <select id="cars">
+
+    </select>
 <table class="table table-hover">
     <thead>
     <tr>
