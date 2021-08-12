@@ -14,11 +14,26 @@
         {
             window.location = '/pages/book';
         }
-
         $(document).ready(function () {
+            $("#alert").hide(0);
             clearInput();
             grid();
+
+
+
+
         });
+        function motherRefresh() {
+            $(document).ready(function () {
+                // $("#alert").hide(0);
+                clearInput();
+                grid();
+                grid();
+
+
+
+            });
+        }
 
         function save()
         {
@@ -34,8 +49,10 @@
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json'
             });
-            clearTbl();
-            grid();
+            $("#alert").delay(500).fadeIn(700).fadeOut(500);
+            motherRefresh();
+            // clearTbl();
+            // grid();
 
         }
         function grid(){
@@ -94,8 +111,9 @@
                 dataType: 'json',
 
             });
-            clearTbl();
-            grid();
+            motherRefresh();
+            // clearTbl();
+            // grid();
 
         }
         function updateById(id)
@@ -151,6 +169,14 @@
             }
         }
 
+        function bootalert()
+        {
+          // var alert = document.getElementById("alert");
+          // alert.style.visibility = "visible";
+          //   $("#alert").delay(5000).fadeIn(500);
+            $("#alert").delay(0).fadeIn(200);
+        }
+
     </script>
 </head>
 <body>
@@ -171,6 +197,10 @@
     <button onclick="combo();">
         fill combo
     </button>
+    <button onclick="bootalert();">show Alert</button>
+    <div  id="alert" class="alert alert-success">
+        <strong>Success!</strong> this is alert-success
+    </div>
     <div id="auto"></div>
     <select id="cars">
 
