@@ -32,12 +32,26 @@
             });
         }
 
-        function save()
+        function beforSave()
         {
-
             var id = $('#id').val();
             var name = $('#fname').val();
             var family = $('#lname').val();
+            if (name == null || name == "" || family == null || family == "")
+            {
+                alert("Fill Name And Family");
+            }else if (name != null || name != "" || family != null || family != "")
+            {
+                alert(save(id,name,family));
+            }
+        }
+        function save(id,name,family)
+        {
+
+
+            // var id = $('#id').val();
+            // var name = $('#fname').val();
+            // var family = $('#lname').val();
             const allStudents = {"id":id,"name":name,"family":family};
             $.ajax({
                 url:  '/rest/save/',
@@ -196,17 +210,25 @@
 </head>
 <body>
 <div class="container">
-<div style="margin: auto;text-align: center;"><button onclick="BookPage();">Book</button></div>
-<input type="text" id="id" disabled>
-<input type="text" id="fname">
-<input type="text" id="lname">
-    <select class="combo-box" id="combo">
+<%--<div style="margin: auto;text-align: center;"><button onclick="BookPage();">Book</button></div>--%>
+    <div class="row ">
+<input class="form-control my-2 col-sm-4" type="text" id="id" disabled>
+    </div>
+    <div class="row">
+<input class="form-control my-2 col-sm-4" type="text" id="fname">
+</div>
+    <div class="row">
+<input class="form-control my-2 col-sm-4" type="text" id="lname">
+    </div>
+    <div class="row">
+    <select class="form-control my-2 col-sm-4 combo-box" id="combo">
 
     </select>
-<button class="aaa" style="cursor: pointer" onclick="save();">s.a.v.e</button>
-<button style="cursor: pointer"  onclick="clearTbl();">clear grid</button>
-<button class="aaa" style="cursor: pointer"  onclick="clearInput();">clear Input</button>
-    <button onclick="repet();">
+    </div>
+<button class="btn btn-success" style="cursor: pointer" onclick="beforSave();">s.a.v.e</button>
+<button class="btn btn-info" onclick="clearTbl();">clear grid</button>
+<button class="btn btn-danger" style="cursor: pointer"  onclick="clearInput();">clear Input</button>
+    <button class="btn btn-primary" onclick="repet();">
         Reapet
     </button>
     <button onclick="bootalert();">show Alert</button>
@@ -214,7 +236,7 @@
 <%--        <strong>Success!</strong> this is alert-success--%>
 <%--    </div>--%>
     <div id="auto"></div>
-<table class="table table-hover">
+<table class="table table-bordered table-striped table-hover">
     <thead>
     <tr>
         <td>id</td>

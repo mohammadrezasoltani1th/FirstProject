@@ -21,8 +21,9 @@ public class AllStudentsService {
     public String save(AllStudents allStudents)
     {
 
-         repo.save(allStudents);
-         return "done";
+        repo.save(allStudents);
+
+        return "done";
     }
 
     public List<AllStudents> grid()
