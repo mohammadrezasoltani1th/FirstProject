@@ -15,19 +15,16 @@
             window.location = '/pages/book';
         }
         $(document).ready(function () {
-            $("#alert").hide(0);
+            // $("#alert").hide(0);
+            setInterval(motherRefresh, 60000);
             clearInput();
             grid();
-
-
-
-
         });
         function motherRefresh() {
             $(document).ready(function () {
                 // $("#alert").hide(0);
                 clearInput();
-                grid();
+                clearTbl();
                 grid();
 
 
@@ -49,10 +46,12 @@
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json'
             });
-            $("#alert").delay(500).fadeIn(700).fadeOut(500);
+            // $("#alert").delay(500).fadeIn(700).fadeOut(500);
+            // clearTbl();
             motherRefresh();
             // clearTbl();
             // grid();
+
 
         }
         function grid(){
@@ -68,27 +67,36 @@
                     clearInput();
                     for (i = 0; i < data.length; i++) {
                         myFunction(data[i].id,data[i].name,data[i].family,data.length);
+
                     }
 
 
                 }
             });
 
-            function myFunction(id,name,family) {
-                var table = document.getElementById("tbody");
-                var row = table.insertRow(0);
-                var cell1 = row.insertCell(0);
-                var cell2 = row.insertCell(1);
-                var cell3 = row.insertCell(2);
-                var cell4 = row.insertCell(3);
-                var cell5 = row.insertCell(4);
-                cell1.innerHTML = id;
-                cell2.innerHTML = name;
-                cell3.innerHTML = family;
-                cell4.innerHTML = '<button value='+id+' onclick="deleteById(value)">DELETE</button>';
-                cell5.innerHTML = '<button value='+id+' onclick="updateById(value)">UPDATE</button>';
+        }
+        function myFunction(id,name,family) {
+            var table = document.getElementById("tbody");
+            var row = table.insertRow(0);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            row.ondblclick = function load(){
+                updateById(id);
+                // console.log(id);
+                //    combo(id);
 
             }
+            console.log(id);
+            cell1.innerHTML = id;
+            cell2.innerHTML = name;
+            cell3.innerHTML = family;
+            cell4.innerHTML = '<button value='+id+' onclick="deleteById(value)">DELETE</button>';
+            cell5.innerHTML = '<button value='+id+' onclick="updateById(value)">UPDATE</button>';
+            combo(name);
+            // combo(name);
 
         }
         function clearTbl()
@@ -158,16 +166,17 @@
 
 
         }
-        function combo()
-        {
-            for (i = 0;i<5;i++)
-            {
-                var cmbo = document.createElement("option");
-                cmbo.innerText = "bmw";
-                document.getElementById("cars").appendChild(cmbo);
-
-            }
-        }
+        // function combo(name)  Infiniti Loop
+        // {
+        //   console.log(name);
+        //     for (i = 0;i<name.length;i++)
+        //     {
+        //         var cmbo = document.createElement("option");
+        //         cmbo.innerText = id;
+        //         document.getElementById("cars").appendChild(cmbo);
+        //
+        //     }
+        // }
 
         function bootalert()
         {
@@ -176,7 +185,13 @@
           //   $("#alert").delay(5000).fadeIn(500);
             $("#alert").delay(0).fadeIn(200);
         }
-
+        function combo(name)
+        {
+            console.log("combo       "+name);
+            var option = document.createElement("option");
+            option.innerHTML = name;
+            document.getElementById("combo").appendChild(option);
+        }
     </script>
 </head>
 <body>
@@ -185,26 +200,20 @@
 <input type="text" id="id" disabled>
 <input type="text" id="fname">
 <input type="text" id="lname">
+    <select class="combo-box" id="combo">
 
+    </select>
 <button class="aaa" style="cursor: pointer" onclick="save();">s.a.v.e</button>
 <button style="cursor: pointer"  onclick="clearTbl();">clear grid</button>
 <button class="aaa" style="cursor: pointer"  onclick="clearInput();">clear Input</button>
-<button class="aaa" style="cursor: pointer"  onclick="aer();">cleasadasdsadsadr Input</button>
-<button style="cursor: pointer" onclick="grid();">grid</button>
     <button onclick="repet();">
         Reapet
     </button>
-    <button onclick="combo();">
-        fill combo
-    </button>
     <button onclick="bootalert();">show Alert</button>
-    <div  id="alert" class="alert alert-success">
-        <strong>Success!</strong> this is alert-success
-    </div>
+<%--    <div  id="alert" class="alert alert-success">--%>
+<%--        <strong>Success!</strong> this is alert-success--%>
+<%--    </div>--%>
     <div id="auto"></div>
-    <select id="cars">
-
-    </select>
 <table class="table table-hover">
     <thead>
     <tr>
