@@ -42,7 +42,8 @@
                 alert("Fill Name And Family");
             }else if (name != null || name != "" || family != null || family != "")
             {
-                alert(save(id,name,family));
+               save(id,name,family);
+               alert("Successful Saved");
             }
         }
         function save(id,name,family)
@@ -97,18 +98,18 @@
             var cell3 = row.insertCell(2);
             var cell4 = row.insertCell(3);
             var cell5 = row.insertCell(4);
-            row.ondblclick = function load(){
-                updateById(id);
-                // console.log(id);
-                //    combo(id);
-
-            }
+            // row.ondblclick = function load(){
+            //     updateById(id);
+            //     // console.log(id);
+            //     //    combo(id);
+            //
+            // }
             console.log(id);
             cell1.innerHTML = id;
             cell2.innerHTML = name;
             cell3.innerHTML = family;
-            cell4.innerHTML = '<button value='+id+' onclick="deleteById(value)">DELETE</button>';
-            cell5.innerHTML = '<button value='+id+' onclick="updateById(value)">UPDATE</button>';
+            cell4.innerHTML = '<button class="btn btn-danger" value='+id+' onclick="beforDelete(value)">DELETE</button>';
+            cell5.innerHTML = '<button class="btn btn-success" value='+id+' onclick="updateById(value)">UPDATE</button>';
             combo(name);
             // combo(name);
 
@@ -122,6 +123,17 @@
             $("#id").val('');
             $("#fname").val('');
             $("#lname").val('');
+            $("#file-input").val('');
+        }
+        function beforDelete(id)
+        {
+            if (confirm("Are You Sure ?") == true)
+            {
+                deleteById(id);
+                alert("Deleted")
+            }else {
+                return false;
+            }
         }
         function deleteById(id)
         {
@@ -212,26 +224,29 @@
 <div class="container">
 <%--<div style="margin: auto;text-align: center;"><button onclick="BookPage();">Book</button></div>--%>
     <div class="row ">
-<input class="form-control my-2 col-sm-4" type="text" id="id" disabled>
+<input class="form-control my-2 col-sm-12" type="text" id="id" placeholder="Record Id" disabled>
     </div>
     <div class="row">
-<input class="form-control my-2 col-sm-4" type="text" id="fname">
+<input class="form-control my-2 col-sm-12" type="text" id="fname" placeholder="Please Enter Name">
 </div>
     <div class="row">
-<input class="form-control my-2 col-sm-4" type="text" id="lname">
+<input class="form-control my-2 col-sm-12" type="text" id="lname" placeholder="Please Enter Family">
     </div>
     <div class="row">
-    <select class="form-control my-2 col-sm-4 combo-box" id="combo">
-
+    <select class="form-control my-2 col-sm-12 combo-box" id="combo">
     </select>
     </div>
-<button class="btn btn-success" style="cursor: pointer" onclick="beforSave();">s.a.v.e</button>
-<button class="btn btn-info" onclick="clearTbl();">clear grid</button>
-<button class="btn btn-danger" style="cursor: pointer"  onclick="clearInput();">clear Input</button>
+    <div class="row">
+        <input class="form-control my-2 col-sm-12" id="file-input" type="file" name="name" />
+    </div>
+<button class="btn btn-success" style="cursor: pointer" onclick="beforSave();">Save</button>
+<button class="btn btn-info" onclick="clearTbl();">Clear Grid</button>
+<button class="btn btn-danger" style="cursor: pointer"  onclick="clearInput();">Clear Input</button>
     <button class="btn btn-primary" onclick="repet();">
         Reapet
     </button>
     <button onclick="bootalert();">show Alert</button>
+
 <%--    <div  id="alert" class="alert alert-success">--%>
 <%--        <strong>Success!</strong> this is alert-success--%>
 <%--    </div>--%>
@@ -239,10 +254,11 @@
 <table class="table table-bordered table-striped table-hover">
     <thead>
     <tr>
-        <td>id</td>
-        <td>name</td>
-        <td>family</td>
-        <td>action</td>
+        <td>Row</td>
+        <td>Name</td>
+        <td>Family</td>
+        <td>Action</td>
+        <td>Action</td>
     </tr>
     </thead>
     <tbody id="tbody">

@@ -15,9 +15,9 @@ public class PageController {
         return "Index";
     }
 
-    @RequestMapping(value = "/book")
-    public String book()
+    @RequestMapping(value = "/test")
+    public String test()
     {
-        return "Book";
+        return "Test";
     }
 }
