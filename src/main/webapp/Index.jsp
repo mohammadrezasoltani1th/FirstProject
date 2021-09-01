@@ -50,8 +50,6 @@
         {
 
 
-
-
             // var id = $('#id').val();
             // var name = $('#fname').val();
             // var family = $('#lname').val();
