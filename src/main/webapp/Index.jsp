@@ -218,10 +218,11 @@
             option.innerHTML = name;
             document.getElementById("combo").appendChild(option);
         }
+
     </script>
 </head>
 <body>
-<a>hello</a>
+<p>hello world</p>
 
 <div class="container">
 <%--<div style="margin: auto;text-align: center;"><button onclick="BookPage();">Book</button></div>--%>
