@@ -52,6 +52,7 @@
 
 
 
+
             // var id = $('#id').val();
             // var name = $('#fname').val();
             // var family = $('#lname').val();
@@ -70,6 +71,9 @@
             // grid();
 
 
+        }
+        function start(){
+            console.log(111)
         }
         function grid(){
             clearTbl();
@@ -223,7 +227,6 @@
     </script>
 </head>
 <body>
-<p>HELLO UNIVERCITY</p>
 <div class="container">
 <%--<div style="margin: auto;text-align: center;"><button onclick="BookPage();">Book</button></div>--%>
     <div class="row ">
