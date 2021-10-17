@@ -15,13 +15,9 @@
     <style><%@include file="webjars/bootstrap/4.0.0/css/bootstrap.min.css"%></style>
     <script><%@include file="webjars/jquery/3.6.0/jquery.min.js"%></script>
     <script>
-        // $('#button').on('click', function() {
-        //     $('#file-input').trigger('click');
-        // });
-        // var file = $("#file-input").val();
-        // if (file != null || file != ""){
-        //     fillFile();
-        // }
+        $(document).ready(function () {
+            grid();
+        });
 
         function fillFile(){
             var file = $("#file-input").val();
@@ -33,19 +29,75 @@
 
         }
 
+        function saveFile(){
+            // console.log($('#txt').val());
+            var nfile =  $('#txt').val();
+            const saveFiles = {"nfile":nfile};
+            console.log(nfile);
+            $.ajax({
+                url: '/rest/savefile',
+                type: 'POST',
+                data: JSON.stringify(saveFiles),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json'
+            });
+        }
+        function grid(){
+
+            $.ajax({
+                url:  '/rest/gridFile/',
+                type: 'GET',
+                data: JSON.stringify(),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success:function (data){
+
+                    for (i = 0; i < data.length; i++) {
+                        myFunction(data[i].id,data[i].nfile);
+
+                    }
+
+
+                }
+            });
+
+        }
+        function myFunction(id,name) {
+            var table = document.getElementById("tbody");
+            var row = table.insertRow(0);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            cell1.innerHTML = id;
+            cell2.innerHTML = name;
+            cell3.innerHTML = '<button class="btn btn-success" value='+id+' onclick="updateById(value)">Download</button>';
+
+        }
+
     </script>
 </head>
 <body>
-<div class="container-fluid">
-<%--    <button id="button" onclick="choosFile();">Open</button>--%>
+<div class="container">
     <input id="file-input" type="file" name="name" />
     <br>
     <button onclick="choosFile();">fillll it</button>
     <br>
     <a onclick="fillFile();" href="" id="filelink" download="">DownloadFile</a>
     <input id="txt" type="text">
+    <button class="btn-danger" onclick="saveFile()">save</button>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <td>Row</td>
+            <td>fileName</td>
+            <td>Action</td>
 
+        </tr>
+        </thead>
+        <tbody id="tbody">
 
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

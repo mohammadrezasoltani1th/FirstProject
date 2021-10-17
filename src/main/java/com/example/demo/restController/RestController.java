@@ -1,7 +1,9 @@
 package com.example.demo.restController;
 
 import com.example.demo.model.AllStudents;
+import com.example.demo.model.SaveFiles;
 import com.example.demo.service.AllStudentsService;
+import com.example.demo.service.SaveFilesService;
 import com.example.demo.viewModel.VModel;
 import org.apache.catalina.mapper.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,9 @@ public class RestController {
 
     @Autowired
     private AllStudentsService allStudentsService;
+
+    @Autowired
+    private SaveFilesService saveFilesService;
 
     @RequestMapping(value = "/save",method = RequestMethod.POST)
 
@@ -45,6 +50,19 @@ public class RestController {
     {
        return allStudentsService.loadById(id);
     }
+
+    @RequestMapping(value = "/savefile",method = RequestMethod.POST)
+    public void savefile (@RequestBody SaveFiles saveFiles){
+        saveFilesService.saveFile(saveFiles);
+    }
+
+    @RequestMapping(value = "/gridFile",method = RequestMethod.GET)
+    public List<SaveFiles> gridFile(){
+        return saveFilesService.grid();
+
+    }
+
+
 
 
 

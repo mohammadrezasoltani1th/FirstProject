@@ -20,4 +20,10 @@ public class PageController {
     {
         return "Test";
     }
+
+    @RequestMapping(value = "/Home")
+    public String Home()
+    {
+        return "Home";
+    }
 }
