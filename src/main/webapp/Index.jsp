@@ -221,7 +221,7 @@
     </script>
 </head>
 <body>
-<p>HELLO UNIVERCITY</p>
+<jsp:include page="Header.jsp"/>
 <div class="container">
 <%--<div style="margin: auto;text-align: center;"><button onclick="BookPage();">Book</button></div>--%>
     <div class="row ">

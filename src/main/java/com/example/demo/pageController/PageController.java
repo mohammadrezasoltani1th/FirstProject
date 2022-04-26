@@ -26,4 +26,17 @@ public class PageController {
     {
         return "Home";
     }
+
+    @RequestMapping(value = "/ufile")
+    public String ufile()
+    {
+        return "UploaddFile";
+    }
+
+    @RequestMapping(value = "/Header")
+    public String Header()
+    {
+        return "Header";
+    }
+
 }

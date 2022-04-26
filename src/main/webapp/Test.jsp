@@ -77,6 +77,7 @@
     </script>
 </head>
 <body>
+<jsp:include page="Header.jsp"/>
 <div class="container">
     <input id="file-input" type="file" name="name" />
     <br>
